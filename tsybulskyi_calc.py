@@ -1,28 +1,51 @@
 
-def operations(a, b, op):
-	"""function requires 3 paramters:
-	a - first operand, integre only
-	b - second operand, integer only
-	op - operation, shall be one of '+', '-', '/', '%', '**' """
+class Calculator:
 
-	if op == '+':
-		print('a + b =', a + b)
-	elif op == '-':
-		print('a - b =', a - b)
-	elif op == '/':
+	def __init__(self, a, b, op):
+		self.a = a
+		self.b = b
+		self.op = op
+
+	def add(self):
+		return self.a + self.b
+
+	def minus(self):
+		return self.a - self.b
+
+	def divide(self):
 		try:
-			print('a / b =', a/b)
+			self.a / self.b
 		except ZeroDivisionError:
-			print('Cannot devide by zero')
-	elif op == '%':
+			return 0
+		else:
+			return self.a / self.b
+
+	def divide_by_module(self):
 		try:
-			print('a % b =', a%b)
+			self.a % self.b
 		except ZeroDivisionError:
-			print('Cannot devide by zero')
-	elif op == '**':
-		print('a ** b =', a**b)
-	else:
-		print("You've entered unknown oprtation")
+			return 0
+		else:
+			return self.a % self.b
+
+	def check_operation(self):
+		if op not in ['+', '-', '/', '%']:
+			return False
+		else:
+			return True
+
+	def calculate(self):
+		if self.check_operation():
+			if op == '+':
+				return self.add()
+			elif op == '-':
+				return self.minus()
+			elif op == '/':
+				return self.divide()
+			elif op == '%':
+				return self.divide_by_module()
+		else:
+			return False
 
 
 while True:
@@ -49,8 +72,6 @@ while True:
 	op = input('Enter operation: ')
 	if op == 'q':
 		break
-	elif op not in ['+', '-', '/', '%', '**']:
-		print('Unsupported opperation')
-		continue
 
-	operations(a, b, op)
+	calc = Calculator(a, b, op)
+	print(calc.calculate())
