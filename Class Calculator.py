@@ -25,6 +25,58 @@ class Calculator:
             return self.x / self.y
         
 
+def calculation(raw_expression): 
+
+    for operation in operations:
+
+        if operation in raw_expression:                                                                             # checking for an operation in a string    
+
+            operation_index = raw_expression.index(operation)
+
+            if operation_index > 0 and operation_index < len(raw_expression):                                       # checking for an operation place in a string
+
+                if raw_expression[0:operation_index].isdigit():
+    
+                    x = float(raw_expression[0:operation_index])
+
+                else:
+
+                    break
+
+                if raw_expression[operation_index+1:expression_length].isdigit():
+
+                    y = float(raw_expression[operation_index+1:expression_length])
+                    
+                else:
+
+                    break
+                    
+                Calc = Calculator(x, y)
+
+                result = operations[operation](Calc)
+
+                print('\n')
+
+                if type(result) is float:
+
+                    return print("Result : ", "%.2f" % result, '\n')
+
+                else:
+
+                    return print(result, '\n')
+
+                break
+
+
+            else:
+
+                print('\nExpression Error!')
+
+                break
+
+    print('\nExpression Error!')
+
+
 operations = {'/': Calculator.divide, '*': Calculator.multiply, '+': Calculator.add, '-': Calculator.subtract} 
 
 print('Write an expression in one line. ex.: A*B')
@@ -32,8 +84,6 @@ print('Write an expression in one line. ex.: A*B')
 print('\nIf you want to quit write an exit')
 
 while True:
-
-    counter = 0
 
     raw_expression = input('\nExpression: ')
 
@@ -47,56 +97,11 @@ while True:
 
     if expression_length >= 3:                                                                                          # checking for the minimum line size
 
-        for operation in operations:
-
-            if operation in raw_expression:                                                                             # checking for an operation in a string    
-
-                operation_index = raw_expression.index(operation)
-
-                if operation_index > 0 and operation_index < len(raw_expression):                                       # checking for an operation place in a string
-
-                    x = float(raw_expression[0:operation_index])
-
-                    y = float(raw_expression[operation_index+1:expression_length])
-
-                    Calc = Calculator(x, y)
-
-                    result = operations[operation](Calc)
-
-                    print('\n')
-
-                    if type(result) is float:
-
-                        print("Result : ", "%.2f" % result, '\n')
-
-                    else:
-
-                        print(result, '\n')
-
-                    break
-
-
-                else:
-
-                    print('\nExpression Error 1 !')
-
-                    break
-
-            else:
-
-                counter = counter + 1
-
-                if counter == 4:
-
-                    counter = 0
-
-                    print('\nExpression Error 2!')
-
-                    break
-
+        calculation(raw_expression)
+        
     else:
 
-        print('\nExpression Error 3!')
+        print('\nExpression Error!')
 
         continue
 
