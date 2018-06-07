@@ -27,6 +27,8 @@ class Calculator:
     # This method makes calculations
     def calculation(raw_expression): 
 
+        operations = {'/': Calculator.divide, '*': Calculator.multiply, '+': Calculator.add, '-': Calculator.subtract}
+
         for operation in operations:
 
             if operation in raw_expression:                                                                             # checking for an operation in a string    
@@ -76,8 +78,6 @@ class Calculator:
 
         print('\nExpression Error!')
 
-
-operations = {'/': Calculator.divide, '*': Calculator.multiply, '+': Calculator.add, '-': Calculator.subtract} 
 
 print('Write an expression in one line. ex.: A*B')
 
