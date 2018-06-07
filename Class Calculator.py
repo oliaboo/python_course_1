@@ -24,57 +24,57 @@ class Calculator:
                     return 'Division by zero'
             return self.x / self.y
         
+    # This method makes calculations
+    def calculation(raw_expression): 
 
-def calculation(raw_expression): 
+        for operation in operations:
 
-    for operation in operations:
+            if operation in raw_expression:                                                                             # checking for an operation in a string    
 
-        if operation in raw_expression:                                                                             # checking for an operation in a string    
+                operation_index = raw_expression.index(operation)
 
-            operation_index = raw_expression.index(operation)
+                if operation_index > 0 and operation_index < len(raw_expression):                                       # checking for an operation place in a string
 
-            if operation_index > 0 and operation_index < len(raw_expression):                                       # checking for an operation place in a string
+                    if raw_expression[0:operation_index].isdigit():
+        
+                        x = float(raw_expression[0:operation_index])
 
-                if raw_expression[0:operation_index].isdigit():
-    
-                    x = float(raw_expression[0:operation_index])
+                    else:
 
-                else:
+                        break
+
+                    if raw_expression[operation_index+1:expression_length].isdigit():
+
+                        y = float(raw_expression[operation_index+1:expression_length])
+                        
+                    else:
+
+                        break
+                        
+                    Calc = Calculator(x, y)
+
+                    result = operations[operation](Calc)
+
+                    print('\n')
+
+                    if type(result) is float:
+
+                        return print("Result : ", "%.2f" % result, '\n')
+
+                    else:
+
+                        return print(result, '\n')
 
                     break
 
-                if raw_expression[operation_index+1:expression_length].isdigit():
 
-                    y = float(raw_expression[operation_index+1:expression_length])
-                    
                 else:
+
+                    print('\nExpression Error!')
 
                     break
-                    
-                Calc = Calculator(x, y)
 
-                result = operations[operation](Calc)
-
-                print('\n')
-
-                if type(result) is float:
-
-                    return print("Result : ", "%.2f" % result, '\n')
-
-                else:
-
-                    return print(result, '\n')
-
-                break
-
-
-            else:
-
-                print('\nExpression Error!')
-
-                break
-
-    print('\nExpression Error!')
+        print('\nExpression Error!')
 
 
 operations = {'/': Calculator.divide, '*': Calculator.multiply, '+': Calculator.add, '-': Calculator.subtract} 
@@ -97,7 +97,7 @@ while True:
 
     if expression_length >= 3:                                                                                          # checking for the minimum line size
 
-        calculation(raw_expression)
+        Calculator.calculation(raw_expression)
         
     else:
 
