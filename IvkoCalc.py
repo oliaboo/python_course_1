@@ -1,34 +1,36 @@
-op_list = ["-","+","/","*","**","%"]
+class Calculator:
+    def subtraction(self):
+        """Subtracts number2  from number1"""
+        return number1-number2
 
-def subtraction():
-    """Subtracts number2  from number1"""
-    return number1-number2
+    def addition(self):
+        """Adds values of number1 and number2"""
+        return number1+number2
 
-def addition():
-    """Adds values of number1 and number2"""
-    return number1+number2
-
-def division():
-    """Divides number1 by number2"""
-    try:
-        return number1/number2
-    except ZeroDivisionError:
-            return 'Infinity'
+    def division(self):
+        """Divides number1 by number2"""
+        try:
+            return number1/number2
+        except ZeroDivisionError:
+                return 'Infinity'
         
-def multiplication():
-    """Multiplies values of number1 and number2"""
-    return number1*number
+    def multiplication(self):
+        """Multiplies values of number1 and number2"""
+        return number1*number
 
-def modulus():
-    """Divides number1 by number2 and returns remainder"""
-    return number1%number2
+    def modulus(self):
+        """Divides number1 by number2 and returns remainder"""
+        return number1%number2
 
-def exponentiation():
-    """Performs exponential calculation of number1 to the power number2"""
-    return number1**number2
+    def exponentiation(self):
+        """Performs exponential calculation of number1 to the power number2"""
+        return number1**number2
+        
     
+op_list = ["-","+","/","*","**","%"]
     
 while True:
+    calc = Calculator()
     number1 = input("Enter your first number ")
     if number1 == 'exit':
         break
@@ -53,14 +55,14 @@ while True:
         continue
         
     if operand == "-":
-        print(subtraction())
+        print(calc.subtraction())
     elif operand == "+":
-        print(addition())
+        print(calc.addition())
     elif operand == "/":
-        print(division())
+        print(calc.division())
     elif operand == "*":
-        print(multiplication())
+        print(calc.multiplication())
     elif operand == "%":
-        print(modulus())
+        print(calc.modulus())
     elif operand == "**":
-        print(exponentiation())
+        print(calc.exponentiation())    
