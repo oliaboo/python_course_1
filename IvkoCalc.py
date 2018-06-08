@@ -1,4 +1,33 @@
-op_list = ["-","+","/","*","**"]
+op_list = ["-","+","/","*","**","%"]
+
+def subtraction():
+    """Subtracts number2  from number1"""
+    return number1-number2
+
+def addition():
+    """Adds values of number1 and number2"""
+    return number1+number2
+
+def division():
+    """Divides number1 by number2"""
+    try:
+        return number1/number2
+    except ZeroDivisionError:
+            return 'Infinity'
+        
+def multiplication():
+    """Multiplies values of number1 and number2"""
+    return number1*number
+
+def modulus():
+    """Divides number1 by number2 and returns remainder"""
+    return number1%number2
+
+def exponentiation():
+    """Performs exponential calculation of number1 to the power number2"""
+    return number1**number2
+    
+    
 while True:
     number1 = input("Enter your first number ")
     if number1 == 'exit':
@@ -24,20 +53,14 @@ while True:
         continue
         
     if operand == "-":
-        res = number1 - number2
+        print(subtraction())
     elif operand == "+":
-        res = number1 + number2
+        print(addition())
     elif operand == "/":
-        try:
-            res = number1 / number2
-        except ZeroDivisionError:
-            print('Infinity')
-            continue
+        print(division())
     elif operand == "*":
-        res = number1 * number2
+        print(multiplication())
     elif operand == "%":
-        res = number1 % number2
+        print(modulus())
     elif operand == "**":
-        res = number1 ** number2
-    print(res)
-    
+        print(exponentiation())
