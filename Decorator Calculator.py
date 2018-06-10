@@ -67,15 +67,13 @@ class Calculator:
 
                     result = operations[operation](Calc)
 
-                    print('\n')
-
                     if type(result) is float:
 
-                        return print("Result : ", "%.2f" % result, '\n')
+                        return print("Result : ", "%.2f" % result)
 
                     else:
 
-                        return print(result, '\n')
+                        return print(result)
 
                     break
 

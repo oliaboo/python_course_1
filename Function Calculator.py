@@ -90,7 +90,7 @@ while True:
 
     raw_expression = input('\nExpression: ')
 
-    raw_expression.replace(' ', '')                                                                                     # remove all spaces
+    raw_expression = raw_expression.replace(' ', '')                                                                                     # remove all spaces
 
     if raw_expression == 'exit':
 
