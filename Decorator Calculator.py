@@ -1,3 +1,12 @@
+def counter_decorator(some_function):
+    def wrapper(arg1):
+        global counter
+        counter = counter + 1
+        some_function(arg1)
+        print('counter =', counter)
+    return wrapper
+
+
 class Calculator:
 
     def __init__(self, x, y):
@@ -25,14 +34,6 @@ class Calculator:
             return 'Division by zero'
         return self.x / self.y
         
-    def counter_decorator(some_function):
-        def wrapper(arg1):
-            global counter
-            counter = counter + 1
-            some_function(arg1)
-            print('counter =', counter)
-        return wrapper
-
     # This method makes calculations
     @counter_decorator
     def calculation(raw_expression): 
