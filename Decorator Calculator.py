@@ -3,6 +3,7 @@ class Calculator:
     def __init__(self, x, y):
         self.x = x
         self.y = y
+        self.counter = 0
 
     # This method adds two numbers 
     def add(self):
@@ -24,7 +25,16 @@ class Calculator:
             return 'Division by zero'
         return self.x / self.y
         
+    def counter_decorator(some_function):
+        def wrapper(arg1):
+            global counter
+            counter = counter + 1
+            some_function(arg1)
+            print('counter =', counter)
+        return wrapper
+
     # This method makes calculations
+    @counter_decorator
     def calculation(raw_expression): 
 
         operations = {'/': Calculator.divide, '*': Calculator.multiply, '+': Calculator.add, '-': Calculator.subtract}
@@ -82,6 +92,8 @@ class Calculator:
 print('Write an expression in one line. ex.: A*B')
 
 print('\nIf you want to quit write an exit')
+
+counter = 0
 
 while True:
 
