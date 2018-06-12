@@ -1,68 +1,103 @@
 class Calculator:
+    def __init__(self,number1=None,operand=None,number2=None):
+        self.number1 = number1
+        self.operand = operand
+        self.number2 = number2
+
+    def set_number1(self):
+        self.number1 = input('Enter first number ')
+
+    def set_operand(self):
+        self.operand = input('Enter operand ')
+        
+    def set_number2(self):
+        self.number2 = input('Enter second number ')
+
+    def check(self):
+        if self.number1 == 'exit' or self.number2 == 'exit':
+            return False
+        else:
+            return True
+
+    def operand_check(self):
+        if self.operand not in op_list:
+            print('unknown operand')
+            return False
+        else:
+            return  True
+    def first_float(self):
+        try:
+            self.number1 = float(self.number1)
+            return True
+        except ValueError:
+            print("Wrong value of first number")
+            return False
+    def second_float(self):
+        try:
+            self.number2 = float(self.number2)
+            return True
+        except ValueError:
+            print("Wrong value of second number")
+            return False
+    def start(self):
+        if self.operand == "-":
+            print(self.subtraction())
+        elif self.operand == "+":
+            print(self.addition())
+        elif self.operand == "/":
+            print(self.division())
+        elif self.operand == "*":
+            print(self.multiplication())
+        elif self.operand == "%":
+            print(self.modulus())
+        elif self.operand == "**":
+            print(self.exponentiation())
+    
     def subtraction(self):
         """Subtracts number2  from number1"""
-        return number1-number2
+        return self.number1-self.number2
 
     def addition(self):
         """Adds values of number1 and number2"""
-        return number1+number2
+        return self.number1+self.number2
 
     def division(self):
         """Divides number1 by number2"""
         try:
-            return number1/number2
+            return self.number1/self.number2
         except ZeroDivisionError:
                 return 'Infinity'
         
     def multiplication(self):
         """Multiplies values of number1 and number2"""
-        return number1*number
+        return self.number1*self.number2
 
     def modulus(self):
         """Divides number1 by number2 and returns remainder"""
-        return number1%number2
+        return self.number1%self.number2
 
     def exponentiation(self):
         """Performs exponential calculation of number1 to the power number2"""
-        return number1**number2
+        return self.number1**self.number2
         
     
 op_list = ["-","+","/","*","**","%"]
-    
+
 while True:
     calc = Calculator()
-    number1 = input("Enter your first number ")
-    if number1 == 'exit':
+    calc.set_number1()
+    if not calc.check():
         break
-    try:
-        number1 = float(number1)
-    except ValueError:
-        print("Wrong value of first number")
+    calc.first_float()
+    if not calc.first_float():
+        continue 
+    calc.set_operand()
+    if not calc.operand_check():
         continue
-    operand = input("Enter the operand ")
-    if operand in op_list:
-        pass
-    else:
-        print("unknown operand")
-        continue
-    number2 = input("Enter your second number ")
-    if number2 == 'exit':
+    calc.set_number2()
+    if not calc.check():
         break
-    try:
-        number2 = float(number2)
-    except ValueError:
-        print("Wrong value of second number")
-        continue
-        
-    if operand == "-":
-        print(calc.subtraction())
-    elif operand == "+":
-        print(calc.addition())
-    elif operand == "/":
-        print(calc.division())
-    elif operand == "*":
-        print(calc.multiplication())
-    elif operand == "%":
-        print(calc.modulus())
-    elif operand == "**":
-        print(calc.exponentiation())    
+    calc.second_float()
+    if not calc.second_float():
+        continue   
+    calc.start()    
