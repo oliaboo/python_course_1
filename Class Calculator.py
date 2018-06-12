@@ -45,9 +45,9 @@ class Calculator:
 
                         break
 
-                    if raw_expression[operation_index+1:expression_length].isdigit():
+                    if raw_expression[operation_index+1:].isdigit():
 
-                        y = float(raw_expression[operation_index+1:expression_length])
+                        y = float(raw_expression[operation_index+1:])
                         
                     else:
 
