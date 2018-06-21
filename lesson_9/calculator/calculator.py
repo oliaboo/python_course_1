@@ -1,4 +1,5 @@
 from calculator.operations import operations
+import csv
 
 class Calculator:
     
@@ -26,10 +27,11 @@ class Calculator:
             return 'Division by zero'
         return self.x / self.y
         
-    def history(raw_expression):
-        with open('history.txt', 'a') as f:
-            line = raw_expression + '\n'
-            f.write(line)
+    def history(x, y, operation, result):
+        with open('history.csv', 'a') as f:
+            line = [[x, y, operation, result]]
+            writer = csv.writer(f)
+            writer.writerows(line)
         
     # This method makes calculations
     def calculation(raw_expression):
@@ -58,11 +60,11 @@ class Calculator:
 
                         break
 
-                    Calculator.history(raw_expression)
-
                     Calc = Calculator(x, y)
 
                     result = eval(operations[operation])(Calc)
+
+                    Calculator.history(x, y, operation, result)
 
                     print('\n')
 

@@ -1,6 +1,7 @@
 from calculator.calculator import Calculator
+import csv
 
-open('history.txt', 'w').close()
+open('history.csv', 'w').close()
 
 print('Write an expression in one line. ex.: A*B')
 
@@ -20,11 +21,15 @@ while True:
 
         print('\n')
 
-        with open('history.txt', 'r') as f:
+        with open('history.csv', 'r') as f:
 
-            for line in f.readlines():
+            reader = csv.reader(f, delimiter=',', quotechar=',', quoting=csv.QUOTE_MINIMAL)
 
-                print(line)
+            for row in reader:
+
+                if row != []:
+
+                    print(row[0], row[1], row[2], row[3])
 
         continue
 
