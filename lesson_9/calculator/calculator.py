@@ -44,17 +44,21 @@ class Calculator:
 
                 if operation_index > 0 and operation_index < len(raw_expression):                                       # checking for an operation place in a string
 
-                    if raw_expression[0:operation_index].isdigit():
+                    if raw_expression[0:operation_index].replace('.', '').isdigit():
         
                         x = float(raw_expression[0:operation_index])
 
+                        print(x)
+                        
                     else:
 
                         break
 
-                    if raw_expression[operation_index+1:].isdigit():
+                    if raw_expression[operation_index+1:].replace('.', '').isdigit():
 
                         y = float(raw_expression[operation_index+1:])
+
+                        print(y)
 
                     else:
 

@@ -22,7 +22,6 @@ class MyGUI:
 
     def AC(self):
         self.entry_1.delete(0, END)
-        #self.entry_1.insert(END, "0")
 
     def history(self):
         global counter
