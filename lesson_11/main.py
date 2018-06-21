@@ -11,7 +11,6 @@ class MyGUI:
         self.label_1.pack()
         self.entry_1 = Entry(self.main_window, width = 24)
         self.entry_1.pack()
-        #self.entry_1.insert(END, "0")
         self.but_2 = Button(self.main_window, text = 'AC', width=20, command = self.AC)
         self.but_2.pack()
         self.but_3 = Button(self.main_window, text = 'Calculate', width=20, command = self.calculate)
@@ -36,7 +35,7 @@ class MyGUI:
                 reader = csv.reader(f, delimiter=',', quotechar=',', quoting=csv.QUOTE_MINIMAL)
                 for row in reader:
                     if row != []:
-                        string = str(row[0]) + ' ' + str(row[1]) + ' ' + str(row[2]) + ' ' + str(row[3]) + '\n'
+                        string = "{0} {1} {2} = {3}\n".format(row[0], row[2], row[1], row[3]) 
                         self.txt_1.insert(END, string)
 
     def calculate(self):
