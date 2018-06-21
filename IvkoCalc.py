@@ -4,14 +4,15 @@ class Calculator:
         self.operand = operand
         self.number2 = number2
 
-    def set_number1(self):
-        self.number1 = input('Enter first number ')
+    def set_numbers(self):
+        if self.number1 == None:
+            self.number1 = input('Enter first number ')
+        else:
+            self.number2 = input('Enter second number ')
 
     def set_operand(self):
         self.operand = input('Enter operand ')
         
-    def set_number2(self):
-        self.number2 = input('Enter second number ')
 
     def check(self):
         if self.number1 == 'exit' or self.number2 == 'exit':
@@ -41,17 +42,17 @@ class Calculator:
             return False
     def start(self):
         if self.operand == "-":
-            print(self.subtraction())
+            return self.subtraction()
         elif self.operand == "+":
-            print(self.addition())
+            return self.addition()
         elif self.operand == "/":
-            print(self.division())
+            return self.division()
         elif self.operand == "*":
-            print(self.multiplication())
+            return self.multiplication()
         elif self.operand == "%":
-            print(self.modulus())
+            return self.modulus()
         elif self.operand == "**":
-            print(self.exponentiation())
+            return self.exponentiation()
     
     def subtraction(self):
         """Subtracts number2  from number1"""
@@ -85,7 +86,7 @@ op_list = ["-","+","/","*","**","%"]
 
 while True:
     calc = Calculator()
-    calc.set_number1()
+    calc.set_numbers()
     if not calc.check():
         break
     calc.first_float()
@@ -94,10 +95,11 @@ while True:
     calc.set_operand()
     if not calc.operand_check():
         continue
-    calc.set_number2()
+    calc.set_numbers()
     if not calc.check():
         break
     calc.second_float()
     if not calc.second_float():
         continue   
-    calc.start()    
+    print(calc.start())    
+
