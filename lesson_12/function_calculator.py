@@ -20,8 +20,20 @@ def multiply(x, y):
 
 def divide(x, y):
 
-    return x / y
-	    
+	try:
+		
+		x / y
+
+		return x / y
+
+	except ZeroDivisionError:
+
+		print("Division by zero")
+
+		return None
+
+def zero_division():
+    print("Division by zero")
 
 
 def calculation(raw_expression): 
