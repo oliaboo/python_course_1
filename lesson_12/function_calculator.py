@@ -20,17 +20,13 @@ def multiply(x, y):
 
 def divide(x, y):
 
-	try:
-		
-		x / y
-
-	except ZeroDivisionError:
-
-		return 'Division by zero'
+    return x / y
 	    
-	return x / y
+
 
 def calculation(raw_expression): 
+
+    operations = {'/': divide, '*': multiply, '+': add, '-': subtract}
 
     for operation in operations:
 
@@ -62,11 +58,11 @@ def calculation(raw_expression):
 
                 if type(result) is float:
 
-                    return print("Result : ", "%.2f" % result, '\n')
+                    return result
 
                 else:
 
-                    return print(result, '\n')
+                    return result
 
                 break
 
@@ -79,31 +75,37 @@ def calculation(raw_expression):
 
     print('\nExpression Error!')
 
+def main(): 
 
-operations = {'/': divide, '*': multiply, '+': add, '-': subtract} 
+    print('Write an expression in one line. ex.: A*B')
 
-print('Write an expression in one line. ex.: A*B')
+    print('\nIf you want to quit write an exit')
 
-print('\nIf you want to quit write an exit')
+    while True:
 
-while True:
+        raw_expression = input('\nExpression: ')
 
-    raw_expression = input('\nExpression: ')
+        raw_expression = raw_expression.replace(' ', '')                                                                                     # remove all spaces
 
-    raw_expression = raw_expression.replace(' ', '')                                                                                     # remove all spaces
+        if raw_expression == 'exit':
 
-    if raw_expression == 'exit':
+            break
 
-        break
+        expression_length = len(raw_expression)
 
-    expression_length = len(raw_expression)
+        if expression_length >= 3:                                                                                          # checking for the minimum line size
 
-    if expression_length >= 3:                                                                                          # checking for the minimum line size
+            result = calculation(raw_expression)
 
-        calculation(raw_expression)
-        
-    else:
+            print(result)
+            
+        else:
 
-        print('\nExpression Error!')
+            print('\nExpression Error!')
 
-        continue
+            continue
+
+if __name__ == "__main__":
+
+    main()
+
