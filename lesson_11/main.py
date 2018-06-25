@@ -39,6 +39,7 @@ class MyGUI:
 
     def calculate(self):
         raw_expression = self.entry_1.get()
+        raw_expression = raw_expression.replace(' ', '')
         expression_length = len(raw_expression)
         if expression_length >= 3:
             pass
