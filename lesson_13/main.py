@@ -40,7 +40,7 @@ class MyGUI:
 
     def calculate(self):
         raw_expression = self.entry_1.get()
-        pattern = r'^(\d+(\.\d+)?)\s*([\+\-\\\*])\s*(\d+(\.\d+)?)$'
+        pattern = r'^(\d+(\.\d+)?)\s*([\+\-\/\*])\s*(\d+(\.\d+)?)$'
         matcher = re.match(pattern, raw_expression)
         if matcher:
             x = float(matcher.group(1))

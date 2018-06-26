@@ -1,3 +1,0 @@
-from calculator.calculator import Calculator
-
-operations = {'/': Calculator.divide, '*': Calculator.multiply, '+': Calculator.add, '-': Calculator.subtract}
